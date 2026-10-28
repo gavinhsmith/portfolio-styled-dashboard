@@ -1,0 +1,30 @@
+{
+  "domain": "lab.gavinhsmith.com",
+  "groups": [
+    {
+      "group": "Infrastructure",
+      "icon": "tabler:server",
+      "links": [
+        { "name": "Proxmox", "sub": "proxmox", "icon": "tabler:server-2" },
+        { "name": "Router", "sub": "router", "icon": "tabler:router" },
+        { "name": "Pi-hole", "sub": "pihole", "icon": "tabler:shield" }
+      ]
+    },
+    {
+      "group": "Containers",
+      "icon": "tabler:brand-docker",
+      "links": [
+        { "name": "Portainer", "sub": "portainer", "icon": "tabler:brand-docker" },
+        { "name": "Uptime Kuma", "sub": "status", "icon": "tabler:activity" }
+      ]
+    },
+    {
+      "group": "Media",
+      "icon": "tabler:movie",
+      "links": [
+        { "name": "Jellyfin", "sub": "jellyfin", "icon": "tabler:player-play" },
+        { "name": "Nextcloud", "sub": "cloud", "icon": "tabler:cloud" }
+      ]
+    }
+  ]
+}
