@@ -9,18 +9,17 @@ const host = (link) => (link.sub ? `${link.sub}.${config.value.domain}` : config
 
 <template>
   <div class="h-full">
-    <!-- Windows are direct grid children, so a grabbed window can rise above the others.
-         h-auto! keeps each window its own height instead of stretching to the row. -->
-    <div
-      class="w-full h-full grid grid-cols-[minmax(0,20rem)] md:grid-cols-[repeat(2,18rem)] lg:grid-cols-[repeat(3,18rem)] justify-center-safe content-center-safe items-start gap-2 md:gap-4 overflow-x-hidden overflow-y-auto px-4 py-24 md:py-28"
-    >
+    <!-- Windows are direct flex children, so a grabbed window can rise above the others.
+         Up to 3 per row (max-w fits 3 x 18rem), windows in a row share its height, the last row is centered. -->
+    <div class="w-full h-full flex overflow-x-hidden overflow-y-auto px-4 py-24 md:py-28">
+      <div class="m-auto w-full max-w-[56rem] flex flex-wrap justify-center gap-2 md:gap-4">
       <ComputerAppContainer
         v-for="group in config?.groups"
         :key="group.group"
         :title="group.group"
         :icon="group.icon"
         movable
-        class="h-auto!"
+        class="h-auto! w-full max-w-80 md:w-72"
       >
         <ul
           class="w-full h-full flex flex-col p-4 gap-3 bg-surface text-ink text-xs md:text-sm font-mono"
@@ -43,6 +42,7 @@ const host = (link) => (link.sub ? `${link.sub}.${config.value.domain}` : config
           </li>
         </ul>
       </ComputerAppContainer>
+      </div>
     </div>
   </div>
 </template>
