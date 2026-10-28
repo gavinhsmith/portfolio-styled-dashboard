@@ -1,9 +1,10 @@
 <script setup>
-// One window per group in config.json (not committed; copy config.example.json).
+// One window per group in /config.json, loaded in the browser so Docker can mount it
+// (not committed; copy config.example.json to public/config.json).
 // Each link's "sub" becomes https://<sub>.<domain>; an empty "sub" is the bare domain
-import { domain, groups } from "~~/config.json";
+const { data: config } = useFetch("/config.json", { server: false });
 
-const host = (link) => (link.sub ? `${link.sub}.${domain}` : domain);
+const host = (link) => (link.sub ? `${link.sub}.${config.value.domain}` : config.value.domain);
 </script>
 
 <template>
@@ -14,7 +15,7 @@ const host = (link) => (link.sub ? `${link.sub}.${domain}` : domain);
       class="w-full h-full grid grid-cols-[minmax(0,20rem)] md:grid-cols-[repeat(2,18rem)] lg:grid-cols-[repeat(3,18rem)] justify-center-safe content-center-safe items-start gap-2 md:gap-4 overflow-x-hidden overflow-y-auto px-4 py-24 md:py-28"
     >
       <ComputerAppContainer
-        v-for="group in groups"
+        v-for="group in config?.groups"
         :key="group.group"
         :title="group.group"
         :icon="group.icon"

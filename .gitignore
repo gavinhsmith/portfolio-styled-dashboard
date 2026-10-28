@@ -34,4 +34,4 @@ logs
 !.env.example
 
 # Homelab links (copy config.example.json)
-config.json
+public/config.json
