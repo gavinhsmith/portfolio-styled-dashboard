@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Amiri";
+  --font-sans: "Noto Sans";
+  --font-mono: "IBM Plex Mono";
+  --font-sub: "PT Sans";
+
+  /* Named by role, so a palette change is just new values here
+     (plus the pattern's fill in public/img/pattern.svg, which CSS can't reach). */
+  --color-backdrop: #e4e4e7ff; /* page background */
+  --color-pattern: #d4d4d8ff; /* background pattern shapes (lives in pattern.svg) */
+  --color-surface: #fafafaff; /* window bodies */
+  --color-ink: #18181bff; /* text on windows and the page */
+  --color-bar: #27272aff; /* window title bars */
+  --color-bar-ink: #fafafaff; /* text on title bars */
+  --color-accent-1: #a1a1aaff; /* title-bar dots and highlights, lightest to darkest */
+  --color-accent-2: #71717aff;
+  --color-accent-3: #52525bff;
+}
+
+@keyframes bg-pattern-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    /* must be a multiple of the tile size (64px, shrunk by --bg-scale on 3x screens), or the loop jumps */
+    background-position: calc(640px / var(--bg-scale, 1))
+      calc(640px / var(--bg-scale, 1));
+  }
+}
